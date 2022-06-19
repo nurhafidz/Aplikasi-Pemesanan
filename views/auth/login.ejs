@@ -1,0 +1,27 @@
+<%- include('../includes/header'); %>
+
+<div class="container">
+    <form action="/login/" method="post">
+        <!-- user input-->
+        Username:<br />
+        <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            class="form-control"
+            required
+        /><br /><br />
+        Password:<br />
+        <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="form-control"
+            required
+        /><br /><br />
+        <!-- submit button -->
+        <input type="submit" value="login" />
+    </form>
+</div>
+
+<%- include('../includes/footer'); %>
