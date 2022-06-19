@@ -1,33 +1,26 @@
 const indexController = require("../controllers/index.controller");
 const authController = require("../controllers/auth.controller");
-const auth = require("../middlewares/auth");
 const PesananController = require("../controllers/pesanan.controller");
-
+const verifyUser = require("../middlewares/verify");
 const router = require("express").Router();
 
 router.get("/", indexController.index);
 
-
 // route pemesanan
-router.get("/pesanan", auth, PesananController.index);
-router.get("/pesanan/create", auth, PesananController.create);
-router.post("/pesanan/store", auth, (req, res) => {
-    PesananController.store
+router.get("/pesanan", verifyUser.isLogin, PesananController.index);
+router.get("/pesanan/create", verifyUser.isLogin, PesananController.create);
+router.post("/pesanan/store", verifyUser.isLogin, (req, res) => {
+    PesananController.store;
 });
-router.get("/pesanan/edit/:id", auth, PesananController.edit);
-router.post("/pesanan/update/:id", auth, (req,res) => {
-    PesananController.update
+router.get("/pesanan/edit/:id", verifyUser.isLogin, PesananController.edit);
+router.post("/pesanan/update/:id", verifyUser.isLogin, (req, res) => {
+    PesananController.update;
 });
-router.post("/pesanan/delete/:id", auth, (req, res) => {
-   PesananController.destroy 
-}) 
-
+router.post("/pesanan/delete/:id", verifyUser.isLogin, (req, res) => {
+    PesananController.destroy;
+});
 
 // route login
-const verifyUser = require("../middlewares/verify");
-
-
-// router.get("/", indexController.index);
 router.get("/", verifyUser.isLogin, indexController.index);
 
 module.exports = router;
