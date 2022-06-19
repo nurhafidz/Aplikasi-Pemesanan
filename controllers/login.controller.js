@@ -21,7 +21,7 @@ module.exports = {
 
         if (hash) {
             req.session.loggedin = true;
-            req.session.userid = result.id;
+            req.session.userid = result.id_kasir;
             req.session.nama_kasir = result.name_kasir;
             res.redirect("/");
         } else {
