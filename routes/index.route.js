@@ -1,7 +1,6 @@
 const indexController = require("../controllers/index.controller");
 const authController = require("../controllers/auth.controller");
 const auth = require("../middlewares/auth");
-<<<<<<< HEAD
 const PesananController = require("../controllers/pesanan.controller");
 
 const router = require("express").Router();
@@ -25,14 +24,10 @@ router.post("/pesanan/delete/:id", auth, (req, res) => {
 
 
 // route login
-router.get("/login", authController.login);
-=======
 const verifyUser = require("../middlewares/verify");
 
-const router = require("express").Router();
 
 // router.get("/", indexController.index);
 router.get("/", verifyUser.isLogin, indexController.index);
->>>>>>> dea1776af240c96af71bce3d02cac8f6ec9c4b84
 
 module.exports = router;
