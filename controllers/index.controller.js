@@ -1,9 +1,7 @@
 module.exports = {
-  index: async (req, res) => {
-    const name = 'Doe';
-
-    return res.render('index', {
-      name,
-    });
-  },
+    index: async (req, res) => {
+        return res.render("index", {
+            userName: req.session.nama_kasir,
+        });
+    },
 };

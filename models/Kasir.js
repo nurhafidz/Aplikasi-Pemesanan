@@ -1,15 +1,20 @@
-const { DataTypes, DATE, ENUM } = require('sequelize');
-const db = require('../database');
+const { DataTypes } = require("sequelize");
+const db = require("../database");
 
-const Kasir = db.define('Kasir', {
-  id_kasir: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-  },
-  nama_menu: DataTypes.STRING(60),
-  email: DataTypes.STRING(60),
-  password: DataTypes.STRING(60),
+const Kasir = db.define("Kasir", {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    name_kasir: DataTypes.STRING(80),
+    email: {
+        type: DataTypes.STRING(255),
+        unique: true,
+    },
+    password: {
+        type: DataTypes.STRING(255),
+    },
 });
 
 module.exports = Kasir;
