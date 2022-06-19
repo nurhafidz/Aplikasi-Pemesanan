@@ -1,8 +1,15 @@
 <%- include('../includes/header'); %>
 
 <div class="container">
-    <form action="/login/auth" method="post">
-        <!-- user input-->
+    <form action="/register/save" method="post">
+        name kasir:<br />
+        <input
+            type="text"
+            name="username"
+            placeholder="username"
+            class="form-control"
+            required
+        /><br /><br />
         Email:<br />
         <input
             type="text"
