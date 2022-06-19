@@ -1,0 +1,72 @@
+<%- include('../includes/header'); %>
+
+  <div class="container">
+    <h2>
+      Semua Pesanan
+    </h2>
+    <a href="/pesanan/create">
+      <button class="btn btn-primary">
+        Tambah Pesanan
+      </button>
+    </a>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID Pesanan</th>
+          <th>ID Menu</th>
+          <th>ID Kasir</th>
+          <th>Waktu Pemesanan</th>
+          <th>Harga</th>
+          <th>Nomor Meja</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% pesanan.forEach(pesanan=> { %>
+          <tr>
+            <td>
+              <%= pesanan.id %>
+            </td>
+            <td>
+              <%= pesanan.id_menu %>
+            </td>
+            <td>
+              <%= pesanan.id_kasir %>
+            </td>
+            <td>
+              <%= pesanan.waktu_pemesanan %>
+            </td>
+            <td>
+              <%= pesanan.harga %>
+            </td>
+            <td>
+              <%= pesanan.nomor_meja %>
+            </td>
+            <td>
+              <%= pesanan.qty %>
+            </td>
+            <td>
+              <%= pesanan.status %>
+            </td>
+            <td>
+              <div class="">
+                <a href="/pesanan/edit/<%= pesanan.id %>/">
+                  <button class="btn btn-primary">
+                    Edit
+                  </button>
+                </a>
+                <form method="POST" action="/pesanan/delete/<%= pesanan.id %>/">
+                  <button type="submit" class="btn btn-danger">
+                    Delete
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <%- include('../includes/footer'); %>

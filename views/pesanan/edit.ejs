@@ -1,0 +1,37 @@
+<%- include('../includes/header'); %>
+
+  <div class="container">
+    <h2>
+      Edit Pesanan <%= pesanan.id %>
+    </h2>
+
+    <form action="/pesanan/update/<%= pesanan.id %>" method="POST">
+      <div class="mb-3">
+        <label for="waktu" class="form-label">Waktu Pemesanan</label>
+        <input type="text" name="waktu" class="form-control" id="waktu" value="<%= pesanan.waktu_pemesanan %>">
+     </div>
+      <div class="mb-3">
+        <label for="harga" class="form-label">Harga</label>
+        <textarea type="text" name="harga" class="form-control" id="harga"><%= pesanan.harga %></textarea>
+     </div>
+      <div class="mb-3">
+        <label for="nomor_meja" class="form-label">Nomor Meja</label>
+        <textarea type="text" name="nomor_meja" class="form-control" id="nomor_meja"><%= pesanan.nomor_meja %></textarea>
+     </div>
+      <div class="mb-3">
+        <label for="qty" class="form-label">Qty</label>
+        <textarea type="text" name="qty" class="form-control" id="qty"><%= pesanan.qty %></textarea>
+     </div>
+      <div class="mb-3">
+        <label for="inputStatus">Status</label>
+        <select id="inputStatus" class="form-control">
+            <% pesanan.forEach(pesanan => {
+                <option selected><%= pesanan.status %></option>
+            });  %> 
+        </select>
+     </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+
+  <%- include('../includes/footer'); %>
