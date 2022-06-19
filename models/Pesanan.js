@@ -21,7 +21,11 @@ const Pesanan = db.define('Pesanan', {
         key: 'id_kasir'
     }
   },
-  waktu_pemesanan: DataTypes.DATE,
+  waktu_pemesanan: {
+    type: 'TIMESTAMP',
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+    allowNull: false
+  },
   harga: DataTypes.INTEGER(10),
   nomor_meja: DataTypes.INTEGER(3),
   qty: DataTypes.INTEGER(3),
