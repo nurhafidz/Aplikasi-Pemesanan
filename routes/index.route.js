@@ -23,4 +23,5 @@ router.post("/pesanan/delete/:id", verifyUser.isLogin, (req, res) => {
 // route login
 router.get("/", verifyUser.isLogin, indexController.index);
 
+router.get("/logout", verifyUser.isLogout, indexController.index);
 module.exports = router;

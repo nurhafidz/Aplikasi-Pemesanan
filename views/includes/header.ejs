@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Web</title>
+        <title>Aplikasi Pemesanan</title>
         <link rel="stylesheet" href="/css/bootstrap-css/bootstrap.min.css" />
     </head>
 
@@ -40,12 +40,16 @@
                         <a href="#" class="nav-link px-2 link-dark">About</a>
                     </li>
                 </ul>
-
+                    
                 <div class="col-md-3 text-end">
+                    <%if (!userName) { %>
                     <a href="/login" class="btn btn-outline-primary me-2">
                         Login
                     </a>
                     <a href="/register" class="btn btn-primary"> Sign-up </a>
+                    <% }else{ %>
+                        <a href="/logout" class="btn btn-outline-danger me-2">Logout</a>
+                    <%}%>
                 </div>
             </header>
         </div>
