@@ -3,14 +3,15 @@
   <div class="container">
     <h2>
       Semua Pesanan
-    </h2>
+    </h2> 
     <a href="/pesanan/create">
-      <button class="btn btn-primary">
+      <button class="btn btn-success mt-3">
         Tambah Pesanan
       </button>
     </a>
 
-    <table class="table">
+    <div class="table-responsive">
+    <table class="table mt-2">
       <thead>
         <tr>
           <th>ID Pesanan</th>
@@ -19,6 +20,7 @@
           <th>Waktu Pemesanan</th>
           <th>Harga</th>
           <th>Nomor Meja</th>
+          <th>Quantity</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -26,7 +28,7 @@
         <% pesanan.forEach(pesanan=> { %>
           <tr>
             <td>
-              <%= pesanan.id %>
+              <%= pesanan.id_pesanan %>
             </td>
             <td>
               <%= pesanan.id_menu %>
@@ -51,12 +53,12 @@
             </td>
             <td>
               <div class="">
-                <a href="/pesanan/edit/<%= pesanan.id %>/">
+                <a href="/pesanan/edit/<%= pesanan.id_pesanan %>/">
                   <button class="btn btn-primary">
                     Edit
                   </button>
                 </a>
-                <form method="POST" action="/pesanan/delete/<%= pesanan.id %>/">
+                <form method="POST" action="/pesanan/delete/<%= pesanan.id_pesanan %>/">
                   <button type="submit" class="btn btn-danger">
                     Delete
                   </button>
@@ -67,6 +69,7 @@
           <% }); %>
       </tbody>
     </table>
+    </div>
   </div>
 
   <%- include('../includes/footer'); %>
