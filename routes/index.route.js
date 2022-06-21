@@ -15,9 +15,7 @@ router.get("/pesanan/edit/:id", verifyUser.isLogin, PesananController.edit);
 router.post("/pesanan/update/:id", verifyUser.isLogin, (req,res) => {
     PesananController.update
 });
-router.post("/pesanan/delete/:id", verifyUser.isLogin, (req, res) => {
-   PesananController.destroy 
-}) 
+router.post("/pesanan/delete/:id", verifyUser.isLogin, PesananController.destroy) 
 
 
 

@@ -59,13 +59,14 @@ module.exports = {
     },
 
     destroy: async (req, res) => {
-        const pesanan = await Pesanan.findByPk(req.params.id);
+        const id = req.params.id;
 
-        if(!pesanan) {
-            return res.redirect('/pesanan');
-        }
-
-        await pesanan.destroy();
+        // this for delete field in database using id
+        await Pesanan.destroy({
+            where: {
+                id_pesanan: id,
+            },
+        });
 
         return res.redirect('/pesanan');
     }
