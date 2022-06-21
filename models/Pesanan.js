@@ -20,7 +20,7 @@ const Pesanan = db.define("Pesanan", {
         type: DataTypes.INTEGER,
         references: {
             model: Kasir,
-            key: "id",
+            key: "id_kasir",
         },
     },
     waktu_pemesanan: {
