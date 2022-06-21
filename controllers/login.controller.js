@@ -17,10 +17,10 @@ module.exports = {
         const result = await Kasir.findOne({
             where: { email: email },
         });
-        var hash = bcrypt.compare(password.toString(), result.dataValues.password);
-        console.log(password)
-        console.log(result.dataValues.password)
-        console.log(hash)
+        var hash = bcrypt.compare(
+            password.toString(),
+            result.dataValues.password
+        );
         if (hash) {
             req.session.loggedin = true;
             req.session.userid = result.id_kasir;
