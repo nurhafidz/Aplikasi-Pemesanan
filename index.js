@@ -41,6 +41,8 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/login", loginRoutes);
 app.use("/register", registerRoutes);
 
+
+
 db.authenticate()
     .then(() =>
         console.log("[DB] Connection has been established successfully.")

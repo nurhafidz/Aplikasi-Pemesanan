@@ -7,7 +7,8 @@ module.exports = {
     },
 
     create: async (req, res) => {
-        return res.render('pesanan/create');
+        const pesanan = await Pesanan.findAll();
+        return res.render('pesanan/create', {pesanan});
     },
 
     store: async (req, res) => {
