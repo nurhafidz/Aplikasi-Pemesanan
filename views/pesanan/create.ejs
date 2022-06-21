@@ -5,6 +5,19 @@
       Tambah Pesanan
     </h2>
     <form action="/pesanan/store" method="POST">
+      <% pesanan.forEach(pesanan => { %>
+        <%= pesanan.id_menu %>
+      <% }) %> 
+
+      <div class="mb-3">
+        <label for="id_menu" class="form-label">ID Menu</label>
+        <select class="form-control">
+          <% pesanan.forEach(pesanan => { %>
+            <option name="id_menu" id="id_menu" value="<%= pesanan.id_menu %>"><%= pesanan.id_menu %></option>
+          <% }) %>
+        </select>
+      </div>
+
       <div class="mb-3">
         <label for="id_menu" class="form-label">ID Menu</label>
         <input type="text" name="id_menu" class="form-control" id="id_menu" value="">
@@ -31,7 +44,7 @@
      </div>
       <div class="mb-3">
         <label for="inputStatus">Status</label>
-        
+        <textarea type="text" name="qty" class="form-control" id="qty"></textarea>
      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
