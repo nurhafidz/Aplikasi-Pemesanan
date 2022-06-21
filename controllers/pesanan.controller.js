@@ -1,4 +1,7 @@
 const Pesanan = require('../models/Pesanan');
+const Menu = require('../models/Menu');
+const Kasir = require('../models/Kasir');
+
 
 module.exports = {
     index: async (req, res) => {
@@ -7,20 +10,22 @@ module.exports = {
     },
 
     create: async (req, res) => {
-        const pesanan = await Pesanan.findAll();
-        return res.render('pesanan/create', {pesanan});
+        const menu = await Menu.findAll();
+        const kasir = await Kasir.findAll();
+        return res.render('pesanan/create', {menu,kasir});
     },
 
     store: async (req, res) => {
-        await Pesanan, create({
+        await Pesanan.create({
             id_menu: req.body.id_menu,
             id_kasir: req.body.id_kasir,
-            waktu_pemesanan: req.body.waktu_pemesanan,
             harga: req.body.harga,
             nomor_meja: req.body.nomor_meja,
             qty: req.body.qty,
             status: req.body.status
         })
+        console.log(req.body.status)
+        console.log(req.body.id_kasir)
 
         return res.redirect('/pesanan');
     },
