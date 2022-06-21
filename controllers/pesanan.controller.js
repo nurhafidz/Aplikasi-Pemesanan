@@ -31,31 +31,38 @@ module.exports = {
     },
 
     edit: async (req, res) => {
+        const menu = await Menu.findAll();
+        const kasir = await Kasir.findAll();
         const pesanan = await Pesanan.findByPk(req.params.id);
-        
-        if (!post) {
-            return res.redirect('/pesanan');
-        }
-
-        return res.render('pesanan/edit', { pesanan });
+        console.log(pesanan.dataValues)
+        return res.render('pesanan/edit', { pesanan: pesanan.dataValues,menu, kasir});
     },
 
     update: async (req, res) => {
-        const pesanan = await Pesanan.findByPk(req.params.id);
-
-        if(!pesanan) {
-            return res.redirect('/pesanan');
-        }
+        const pesanan = await Pesanan.findByPk(req.params.id)
+        // const pesanan = await Pesanan.findAll({            
+        //     include:{
+        //     model: Menu,
+        //     where: {
+        //         id_menu : req.params.id
+        //     },
+        //     where: {
+        //         id_menu : req.params.id
+        //     }
+        // }}).then(result => {
+        //     const dataPesanan = {...result[0]};
+        //     console.log(dataPesanan.dataValues.Menus)
+        // })
 
         await pesanan.update({
-            // id_menu: req.body.id_menu,
-            // id_kasir: req.body.id_kasir,
-            waktu_pemesanan: req.body.waktu_pemesanan,
+            id_menu: req.body.id_menu,
+            id_kasir: req.body.id_kasir,
             harga: req.body.harga,
             nomor_meja: req.body.nomor_meja,
             qty: req.body.qty,
             status: req.body.status
         });
+        return res.redirect('/pesanan');
     },
 
     destroy: async (req, res) => {

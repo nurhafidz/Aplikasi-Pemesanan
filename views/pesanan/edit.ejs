@@ -2,35 +2,48 @@
 
   <div class="container">
     <h2>
-      Edit Pesanan <%= pesanan.id %>
+      Edit Pesanan No.<%=pesanan.id_pesanan%>
     </h2>
-
-    <form action="/pesanan/update/<%= pesanan.id %>" method="POST">
+    <form method="POST" action="/pesanan/update/<%= pesanan.id_pesanan %>/">
       <div class="mb-3">
-        <label for="waktu" class="form-label">Waktu Pemesanan</label>
-        <input type="text" name="waktu" class="form-control" id="waktu" value="<%= pesanan.waktu_pemesanan %>">
-     </div>
+        <label for="id_menu" class="form-label">Nama Menu</label>
+        <select class="form-control" id="id_menu" name="id_menu">
+          <% menu.forEach(e => { %>
+            <option value="<%= e.id_menu %>"><%= e.nama_menu %></option>
+          <% }) %>
+        </select>
+      </div>
+
+     <div class="mb-3">
+        <label for="id_kasir" class="form-label">ID Kasir</label>
+        <select class="form-control" name="id_kasir">
+          <% kasir.forEach(e => { %>
+            <option value="<%= e.id %>"><%= e.name_kasir %></option>
+          <% }) %>
+        </select>
+      </div>
       <div class="mb-3">
         <label for="harga" class="form-label">Harga</label>
-        <textarea type="text" name="harga" class="form-control" id="harga"><%= pesanan.harga %></textarea>
+        <input type="text" name="harga" class="form-control" id="harga" value="<%=pesanan.harga%>"></input>
      </div>
       <div class="mb-3">
         <label for="nomor_meja" class="form-label">Nomor Meja</label>
-        <textarea type="text" name="nomor_meja" class="form-control" id="nomor_meja"><%= pesanan.nomor_meja %></textarea>
+        <input type="text" name="nomor_meja" class="form-control" id="nomor_meja" value="<%=pesanan.nomor_meja%>" ></input>
      </div>
       <div class="mb-3">
         <label for="qty" class="form-label">Qty</label>
-        <textarea type="text" name="qty" class="form-control" id="qty"><%= pesanan.qty %></textarea>
+        <input type="text" name="qty" class="form-control" id="qty" value="<%=pesanan.qty%>"></input>
      </div>
       <div class="mb-3">
         <label for="inputStatus">Status</label>
-        <select id="inputStatus" class="form-control">
-            <% pesanan.forEach(pesanan => {
-                <option selected><%= pesanan.status %></option>
-            });  %> 
+        <select class="form-control" name="status" id="inputStatus" >
+          <option value="Belum bayar">Belum bayar</option>
+          <option value="Dibayar">Dibayar</option>
+          <option value="Selesai">Selesai</option>
         </select>
+
      </div>
-      <button type="submit" class="btn btn-primary">Update</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 

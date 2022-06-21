@@ -1,5 +1,6 @@
 const { DataTypes, DATE, ENUM } = require('sequelize');
 const db = require('../database');
+const Pesanan = require('../models/Pesanan');
 
 const Menu = db.define('Menu', {
   id_menu: {

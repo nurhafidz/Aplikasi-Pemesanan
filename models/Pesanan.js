@@ -34,4 +34,8 @@ const Pesanan = db.define('Pesanan', {
   status: DataTypes.ENUM('Belum bayar', 'Dibayar', 'Selesai')
 });
 
+// Pesanan.hasMany(Menu,{
+//   foreignKey: 'id_menu',
+// });
+
 module.exports = Pesanan;

@@ -12,12 +12,7 @@ router.get("/pesanan", verifyUser.isLogin, PesananController.index);
 router.get("/pesanan/create", verifyUser.isLogin, PesananController.create);
 router.post("/pesanan/store",PesananController.store);
 router.get("/pesanan/edit/:id", verifyUser.isLogin, PesananController.edit);
-router.post("/pesanan/update/:id", verifyUser.isLogin, (req,res) => {
-    PesananController.update
-});
+router.post("/pesanan/update/:id", verifyUser.isLogin, PesananController.update);
 router.post("/pesanan/delete/:id", verifyUser.isLogin, PesananController.destroy) 
-
-
-
 router.get("/logout", verifyUser.isLogout, indexController.index);
 module.exports = router;
